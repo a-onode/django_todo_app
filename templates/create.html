@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="display-4">CreateTodo</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'index' %}" role="button">Home</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="titleFormControlInput">Title</label>
+            <input type="text" class="form-control" id="titleFormControlInput" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="memoFormControlTextarea">Memo</label>
+            <textarea class="form-control" id="memoFormControlTextarea" rows="3" name="memo"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="duedateFormControlInput">Duedate</label>
+            <input type="text" class="form-control" id="duedateFormControlInput" placeholder="yyyy/mm/dd" name="due_at" required>
+        </div>
+        <div class="d-flex flex-row-reverse">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
