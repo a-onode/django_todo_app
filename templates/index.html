@@ -20,7 +20,7 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ todo.due_at }}</h6>
             <p class="card-text">{{ todo.memo }}</p>
             <a href="#" class="card-link">Done</a>
-            <a href="#" class="card-link">Delete</a>
+            <a href="{% url 'delete' todo.pk %}" class="card-link">Delete</a>
         </div>
     </div>
     {% endfor %}
