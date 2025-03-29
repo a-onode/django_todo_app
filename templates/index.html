@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="display-4">TodoList</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Create</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for todo in object_list %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ todo.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ todo.due_at }}</h6>
+            <p class="card-text">{{ todo.memo }}</p>
+            <a href="#" class="card-link">Done</a>
+            <a href="#" class="card-link">Show more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
