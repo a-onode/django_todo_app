@@ -7,7 +7,7 @@
         featured content or information.</p>
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Create</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'create' %}" role="button">Create</a>
 </div>
 {% endblock %}
 
@@ -20,7 +20,7 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ todo.due_at }}</h6>
             <p class="card-text">{{ todo.memo }}</p>
             <a href="#" class="card-link">Done</a>
-            <a href="#" class="card-link">Show more</a>
+            <a href="#" class="card-link">Delete</a>
         </div>
     </div>
     {% endfor %}
