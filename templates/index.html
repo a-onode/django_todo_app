@@ -13,16 +13,42 @@
 
 {% block content %}
 <div class="container">
-    {% for todo in object_list %}
+    <h3>Incomplete Todo</h3>
+    {% if incomplete_count != 0 %}
+    {% for todo in incomplete_todos %}
     <div class="card mb-4">
         <div class="card-body">
             <h5 class="card-title">{{ todo.title }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ todo.due_at }}</h6>
             <p class="card-text">{{ todo.memo }}</p>
-            <a href="#" class="card-link">Done</a>
+            <a href="{% url 'status' todo.pk %}" class="card-link">Complete</a>
             <a href="{% url 'delete' todo.pk %}" class="card-link">Delete</a>
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="alert alert-success" role="alert">
+        There are no uncompleted Todos.
+    </div>
+    {% endif %}
+
+    <h3>Complete Todo</h3>
+    {% if complete_count != 0 %}
+    {% for todo in complete_todos %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ todo.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ todo.due_at }}</h6>
+            <p class="card-text">{{ todo.memo }}</p>
+            <a href="{% url 'status' todo.pk %}" class="card-link">Incomplete</a>
+            <a href="{% url 'delete' todo.pk %}" class="card-link">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        There are no completed Todos.
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
